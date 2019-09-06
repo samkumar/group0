@@ -299,25 +299,25 @@ run_actions (char **argv)
 {
   /* An action. */
   struct action
-    {
-      char *name;                       /* Action name. */
-      int argc;                         /* # of args, including action name. */
-      void (*function) (char **argv);   /* Function to execute action. */
-    };
+  {
+    char *name;                       /* Action name. */
+    int argc;                         /* # of args, including action name. */
+    void (*function) (char **argv);   /* Function to execute action. */
+  };
 
   /* Table of supported actions. */
   static const struct action actions[] =
-    {
-      {"run", 2, run_task},
+  {
+    {"run", 2, run_task},
 #ifdef FILESYS
-      {"ls", 1, fsutil_ls},
-      {"cat", 2, fsutil_cat},
-      {"rm", 2, fsutil_rm},
-      {"extract", 1, fsutil_extract},
-      {"append", 2, fsutil_append},
+    {"ls", 1, fsutil_ls},
+    {"cat", 2, fsutil_cat},
+    {"rm", 2, fsutil_rm},
+    {"extract", 1, fsutil_extract},
+    {"append", 2, fsutil_append},
 #endif
-      {NULL, 0, NULL},
-    };
+    {NULL, 0, NULL},
+  };
 
   while (*argv != NULL)
     {
@@ -382,7 +382,7 @@ usage (void)
 #ifdef USERPROG
           "  -ul=COUNT          Limit user memory to COUNT pages.\n"
 #endif
-          );
+         );
   shutdown_power_off ();
 }
 

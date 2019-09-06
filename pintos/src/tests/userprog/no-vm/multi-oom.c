@@ -71,24 +71,24 @@ consume_some_resources_and_die (int seed)
 
   switch (random_ulong () % 5)
     {
-      case 0:
-        *(volatile int *) NULL = 42;
+    case 0:
+      *(volatile int *) NULL = 42;
 
-      case 1:
-        return *(volatile int *) NULL;
+    case 1:
+      return *(volatile int *) NULL;
 
-      case 2:
-        return *PHYS_BASE;
+    case 2:
+      return *PHYS_BASE;
 
-      case 3:
-        *PHYS_BASE = 42;
+    case 3:
+      *PHYS_BASE = 42;
 
-      case 4:
-        open ((char *)PHYS_BASE);
-        exit (-1);
+    case 4:
+      open ((char *)PHYS_BASE);
+      exit (-1);
 
-      default:
-        NOT_REACHED ();
+    default:
+      NOT_REACHED ();
     }
   return 0;
 }

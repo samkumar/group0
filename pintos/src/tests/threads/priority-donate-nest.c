@@ -16,10 +16,10 @@
 #include "threads/thread.h"
 
 struct locks
-  {
-    struct lock *a;
-    struct lock *b;
-  };
+{
+  struct lock *a;
+  struct lock *b;
+};
 
 static thread_func medium_thread_func;
 static thread_func high_thread_func;

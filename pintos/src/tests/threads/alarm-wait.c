@@ -26,23 +26,23 @@ test_alarm_multiple (void)
 
 /* Information about the test. */
 struct sleep_test
-  {
-    int64_t start;              /* Current time at start of test. */
-    int iterations;             /* Number of iterations per thread. */
+{
+  int64_t start;              /* Current time at start of test. */
+  int iterations;             /* Number of iterations per thread. */
 
-    /* Output. */
-    struct lock output_lock;    /* Lock protecting output buffer. */
-    int *output_pos;            /* Current position in output buffer. */
-  };
+  /* Output. */
+  struct lock output_lock;    /* Lock protecting output buffer. */
+  int *output_pos;            /* Current position in output buffer. */
+};
 
 /* Information about an individual thread in the test. */
 struct sleep_thread
-  {
-    struct sleep_test *test;     /* Info shared between all threads. */
-    int id;                     /* Sleeper ID. */
-    int duration;               /* Number of ticks to sleep. */
-    int iterations;             /* Iterations counted so far. */
-  };
+{
+  struct sleep_test *test;     /* Info shared between all threads. */
+  int id;                     /* Sleeper ID. */
+  int duration;               /* Number of ticks to sleep. */
+  int iterations;             /* Iterations counted so far. */
+};
 
 static void sleeper (void *);
 

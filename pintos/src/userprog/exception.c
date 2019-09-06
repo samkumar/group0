@@ -103,7 +103,7 @@ kill (struct intr_frame *f)
       /* Some other code segment?  Shouldn't happen.  Panic the
          kernel. */
       printf ("Interrupt %#04x (%s) in unknown segment %04x\n",
-             f->vec_no, intr_name (f->vec_no), f->cs);
+              f->vec_no, intr_name (f->vec_no), f->cs);
       thread_exit ();
     }
 }

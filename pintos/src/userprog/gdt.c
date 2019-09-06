@@ -55,17 +55,17 @@ gdt_init (void)
 
 /* System segment or code/data segment? */
 enum seg_class
-  {
-    CLS_SYSTEM = 0,             /* System segment. */
-    CLS_CODE_DATA = 1           /* Code or data segment. */
-  };
+{
+  CLS_SYSTEM = 0,             /* System segment. */
+  CLS_CODE_DATA = 1           /* Code or data segment. */
+};
 
 /* Limit has byte or 4 kB page granularity? */
 enum seg_granularity
-  {
-    GRAN_BYTE = 0,              /* Limit has 1-byte granularity. */
-    GRAN_PAGE = 1               /* Limit has 4 kB granularity. */
-  };
+{
+  GRAN_BYTE = 0,              /* Limit has 1-byte granularity. */
+  GRAN_PAGE = 1               /* Limit has 4 kB granularity. */
+};
 
 /* Returns a segment descriptor with the given 32-bit BASE and
    20-bit LIMIT (whose interpretation depends on GRANULARITY).

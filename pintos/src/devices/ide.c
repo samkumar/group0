@@ -52,28 +52,28 @@
 
 /* An ATA device. */
 struct ata_disk
-  {
-    char name[8];               /* Name, e.g. "hda". */
-    struct channel *channel;    /* Channel that disk is attached to. */
-    int dev_no;                 /* Device 0 or 1 for master or slave. */
-    bool is_ata;                /* Is device an ATA disk? */
-  };
+{
+  char name[8];               /* Name, e.g. "hda". */
+  struct channel *channel;    /* Channel that disk is attached to. */
+  int dev_no;                 /* Device 0 or 1 for master or slave. */
+  bool is_ata;                /* Is device an ATA disk? */
+};
 
 /* An ATA channel (aka controller).
    Each channel can control up to two disks. */
 struct channel
-  {
-    char name[8];               /* Name, e.g. "ide0". */
-    uint16_t reg_base;          /* Base I/O port. */
-    uint8_t irq;                /* Interrupt in use. */
+{
+  char name[8];               /* Name, e.g. "ide0". */
+  uint16_t reg_base;          /* Base I/O port. */
+  uint8_t irq;                /* Interrupt in use. */
 
-    struct lock lock;           /* Must acquire to access the controller. */
-    bool expecting_interrupt;   /* True if an interrupt is expected, false if
+  struct lock lock;           /* Must acquire to access the controller. */
+  bool expecting_interrupt;   /* True if an interrupt is expected, false if
                                    any interrupt would be spurious. */
-    struct semaphore completion_wait;   /* Up'd by interrupt handler. */
+  struct semaphore completion_wait;   /* Up'd by interrupt handler. */
 
-    struct ata_disk devices[2];     /* The devices on this channel. */
-  };
+  struct ata_disk devices[2];     /* The devices on this channel. */
+};
 
 /* We support the two "legacy" ATA channels found in a standard PC. */
 #define CHANNEL_CNT 2
@@ -377,10 +377,10 @@ ide_write (void *d_, block_sector_t sec_no, const void *buffer)
 }
 
 static struct block_operations ide_operations =
-  {
-    ide_read,
-    ide_write
-  };
+{
+  ide_read,
+  ide_write
+};
 
 /* Selects device D, waiting for it to become ready, and then
    writes SEC_NO to the disk's sector selection registers.  (We

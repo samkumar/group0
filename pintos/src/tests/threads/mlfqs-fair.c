@@ -54,11 +54,11 @@ test_mlfqs_nice_10 (void)
 #define MAX_THREAD_CNT 20
 
 struct thread_info
-  {
-    int64_t start_time;
-    int tick_count;
-    int nice;
-  };
+{
+  int64_t start_time;
+  int tick_count;
+  int nice;
+};
 
 static void load_thread (void *aux);
 

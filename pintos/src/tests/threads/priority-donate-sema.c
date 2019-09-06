@@ -17,10 +17,10 @@
 #include "threads/thread.h"
 
 struct lock_and_sema
-  {
-    struct lock lock;
-    struct semaphore sema;
-  };
+{
+  struct lock lock;
+  struct semaphore sema;
+};
 
 static thread_func l_thread_func;
 static thread_func m_thread_func;

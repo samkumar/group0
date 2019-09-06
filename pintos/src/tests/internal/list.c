@@ -20,10 +20,10 @@
 
 /* A linked list element. */
 struct value
-  {
-    struct list_elem elem;      /* List element. */
-    int value;                  /* Item value. */
-  };
+{
+  struct list_elem elem;      /* List element. */
+  int value;                  /* Item value. */
+};
 
 static void shuffle (struct value[], size_t);
 static bool value_less (const struct list_elem *, const struct list_elem *,

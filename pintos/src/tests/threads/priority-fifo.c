@@ -16,12 +16,12 @@
 #include "threads/thread.h"
 
 struct simple_thread_data
-  {
-    int id;                     /* Sleeper ID. */
-    int iterations;             /* Iterations so far. */
-    struct lock *lock;          /* Lock on output. */
-    int **op;                   /* Output buffer position. */
-  };
+{
+  int id;                     /* Sleeper ID. */
+  int iterations;             /* Iterations so far. */
+  struct lock *lock;          /* Lock on output. */
+  int **op;                   /* Output buffer position. */
+};
 
 #define THREAD_CNT 16
 #define ITER_CNT 16

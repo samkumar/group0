@@ -21,8 +21,8 @@
 
 static void
 fail_io (const char *msg, ...)
-     __attribute__ ((noreturn))
-     __attribute__ ((format (printf, 1, 2)));
+__attribute__ ((noreturn))
+__attribute__ ((format (printf, 1, 2)));
 
 /* Prints MSG, formatting as with printf(),
    plus an error message based on errno,
@@ -105,12 +105,12 @@ static void
 relay (int sock)
 {
   struct pipe
-    {
-      int in, out;
-      char buf[BUFSIZ];
-      size_t size, ofs;
-      bool active;
-    };
+  {
+    int in, out;
+    char buf[BUFSIZ];
+    size_t size, ofs;
+    bool active;
+  };
   struct pipe pipes[2];
 
   /* In case stdin is a file, go back to the beginning.

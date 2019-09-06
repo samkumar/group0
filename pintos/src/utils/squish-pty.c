@@ -18,8 +18,8 @@
 
 static void
 fail_io (const char *msg, ...)
-     __attribute__ ((noreturn))
-     __attribute__ ((format (printf, 1, 2)));
+__attribute__ ((noreturn))
+__attribute__ ((format (printf, 1, 2)));
 
 /* Prints MSG, formatting as with printf(),
    plus an error message based on errno,
@@ -112,12 +112,12 @@ static void
 relay (int pty, int dead_child_fd)
 {
   struct pipe
-    {
-      int in, out;
-      char buf[BUFSIZ];
-      size_t size, ofs;
-      bool active;
-    };
+  {
+    int in, out;
+    char buf[BUFSIZ];
+    size_t size, ofs;
+    bool active;
+  };
   struct pipe pipes[2];
 
   /* Make PTY, stdin, and stdout non-blocking. */
@@ -210,32 +210,32 @@ relay (int pty, int dead_child_fd)
         }
     }
 
-    if (pipes[1].out == -1)
-      return;
+  if (pipes[1].out == -1)
+    return;
 
-    make_nonblocking (STDOUT_FILENO, false);
-    for (;;)
-      {
-        struct pipe *p = &pipes[1];
-        ssize_t n;
+  make_nonblocking (STDOUT_FILENO, false);
+  for (;;)
+    {
+      struct pipe *p = &pipes[1];
+      ssize_t n;
 
-        /* Write buffer. */
-        while (p->size > 0)
-          {
-            n = write (p->out, p->buf + p->ofs, p->size);
-            if (n < 0)
-              fail_io ("write");
-            else if (n == 0)
-              fail_io ("zero-length write");
-            p->ofs += n;
-            p->size -= n;
-          }
-        p->ofs = 0;
+      /* Write buffer. */
+      while (p->size > 0)
+        {
+          n = write (p->out, p->buf + p->ofs, p->size);
+          if (n < 0)
+            fail_io ("write");
+          else if (n == 0)
+            fail_io ("zero-length write");
+          p->ofs += n;
+          p->size -= n;
+        }
+      p->ofs = 0;
 
-        p->size = n = read (p->in, p->buf, sizeof p->buf);
-        if (n <= 0)
-          return;
-      }
+      p->size = n = read (p->in, p->buf, sizeof p->buf);
+      if (n <= 0)
+        return;
+    }
 }
 
 static int dead_child_fd;

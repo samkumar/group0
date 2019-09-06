@@ -43,9 +43,9 @@ time_t
 rtc_get_time (void)
 {
   static const int days_per_month[12] =
-    {
-      31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-    };
+  {
+    31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+  };
   int sec, min, hour, mday, mon, year;
   time_t time;
   int i;

@@ -14,9 +14,9 @@
 
 /* A fixed-point number. */
 typedef struct
-  {
-    int f;
-  }
+{
+  int f;
+}
 fixed_point_t;
 
 /* Returns a fixed-point number with F as its internal value. */

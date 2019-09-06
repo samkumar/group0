@@ -36,29 +36,29 @@
 
 /* Descriptor. */
 struct desc
-  {
-    size_t block_size;          /* Size of each element in bytes. */
-    size_t blocks_per_arena;    /* Number of blocks in an arena. */
-    struct list free_list;      /* List of free blocks. */
-    struct lock lock;           /* Lock. */
-  };
+{
+  size_t block_size;          /* Size of each element in bytes. */
+  size_t blocks_per_arena;    /* Number of blocks in an arena. */
+  struct list free_list;      /* List of free blocks. */
+  struct lock lock;           /* Lock. */
+};
 
 /* Magic number for detecting arena corruption. */
 #define ARENA_MAGIC 0x9a548eed
 
 /* Arena. */
 struct arena
-  {
-    unsigned magic;             /* Always set to ARENA_MAGIC. */
-    struct desc *desc;          /* Owning descriptor, null for big block. */
-    size_t free_cnt;            /* Free blocks; pages in big block. */
-  };
+{
+  unsigned magic;             /* Always set to ARENA_MAGIC. */
+  struct desc *desc;          /* Owning descriptor, null for big block. */
+  size_t free_cnt;            /* Free blocks; pages in big block. */
+};
 
 /* Free block. */
 struct block
-  {
-    struct list_elem free_elem; /* Free list element. */
-  };
+{
+  struct list_elem free_elem; /* Free list element. */
+};
 
 /* Our set of descriptors. */
 static struct desc descs[10];   /* Descriptors. */

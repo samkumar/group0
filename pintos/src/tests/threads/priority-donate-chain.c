@@ -33,10 +33,10 @@
 #define NESTING_DEPTH 8
 
 struct lock_pair
-  {
-    struct lock *second;
-    struct lock *first;
-  };
+{
+  struct lock *second;
+  struct lock *first;
+};
 
 static thread_func donor_thread_func;
 static thread_func interloper_thread_func;
@@ -71,7 +71,7 @@ test_priority_donate_chain (void)
 
       thread_create (name, thread_priority, donor_thread_func, lock_pairs + i);
       msg ("%s should have priority %d.  Actual priority: %d.",
-          thread_name (), thread_priority, thread_get_priority ());
+           thread_name (), thread_priority, thread_get_priority ());
 
       snprintf (name, sizeof name, "interloper %d", i);
       thread_create (name, thread_priority - 1, interloper_thread_func, NULL);
@@ -79,7 +79,7 @@ test_priority_donate_chain (void)
 
   lock_release (&locks[0]);
   msg ("%s finishing with priority %d.", thread_name (),
-                                         thread_get_priority ());
+       thread_get_priority ());
 }
 
 static void
@@ -95,14 +95,14 @@ donor_thread_func (void *locks_)
 
   lock_release (locks->second);
   msg ("%s should have priority %d. Actual priority: %d",
-        thread_name (), (NESTING_DEPTH - 1) * 3,
-        thread_get_priority ());
+       thread_name (), (NESTING_DEPTH - 1) * 3,
+       thread_get_priority ());
 
   if (locks->first)
     lock_release (locks->first);
 
   msg ("%s finishing with priority %d.", thread_name (),
-                                         thread_get_priority ());
+       thread_get_priority ());
 }
 
 static void

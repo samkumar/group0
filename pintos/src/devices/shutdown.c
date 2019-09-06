@@ -58,8 +58,8 @@ shutdown_reboot (void)
 {
   printf ("Rebooting...\n");
 
-    /* See [kbd] for details on how to program the keyboard
-     * controller. */
+  /* See [kbd] for details on how to program the keyboard
+   * controller. */
   for (;;)
     {
       int i;

@@ -11,6 +11,6 @@ test_main (void)
 {
   functionptr fp = NULL;
   msg ("Congratulations - you have successfully called NULL: %d",
-        fp());
+       fp());
   fail ("should have exited with -1");
 }

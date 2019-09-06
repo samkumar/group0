@@ -8,18 +8,18 @@
 
 /* A directory. */
 struct dir
-  {
-    struct inode *inode;                /* Backing store. */
-    off_t pos;                          /* Current position. */
-  };
+{
+  struct inode *inode;                /* Backing store. */
+  off_t pos;                          /* Current position. */
+};
 
 /* A single directory entry. */
 struct dir_entry
-  {
-    block_sector_t inode_sector;        /* Sector number of header. */
-    char name[NAME_MAX + 1];            /* Null terminated file name. */
-    bool in_use;                        /* In use or free? */
-  };
+{
+  block_sector_t inode_sector;        /* Sector number of header. */
+  char name[NAME_MAX + 1];            /* Null terminated file name. */
+  bool in_use;                        /* In use or free? */
+};
 
 /* Creates a directory with space for ENTRY_CNT entries in the
    given SECTOR.  Returns true if successful, false on failure. */
@@ -174,7 +174,7 @@ dir_add (struct dir *dir, const char *name, block_sector_t inode_sector)
   e.inode_sector = inode_sector;
   success = inode_write_at (dir->inode, &e, sizeof e, ofs) == sizeof e;
 
- done:
+done:
   return success;
 }
 
@@ -210,7 +210,7 @@ dir_remove (struct dir *dir, const char *name)
   inode_remove (inode);
   success = true;
 
- done:
+done:
   inode_close (inode);
   return success;
 }
