@@ -16,4 +16,7 @@ insult
 lineup
 matmult
 recursor
+fcreate
+fappend
+rmrec
 *.d
